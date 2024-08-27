@@ -26,10 +26,6 @@ const UserSchema = new Schema({
         minlength: 6,
         select: false // Password should not be returned by default in queries
     },
-    avatar: {
-        type: String, // Store URL to avatar image
-        default: 'https://example.com/default_avatar.jpg' // Replace with actual default avatar URL
-    },
     role: {
         type: String,
         enum: ['user', 'admin'],
