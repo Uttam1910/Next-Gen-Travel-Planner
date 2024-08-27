@@ -30,7 +30,7 @@ const Navbar = () => {
                     <Link to="/login" className="flex items-center text-lg hover:text-yellow-400 transition">
                         <FaSignInAlt className="mr-2" /> Login
                     </Link>
-                    <Link to="/register" className="flex items-center text-lg hover:text-yellow-400 transition">
+                    <Link to="/signup" className="flex items-center text-lg hover:text-yellow-400 transition">
                         <FaUserPlus className="mr-2" /> Register
                     </Link>
                 </nav>
@@ -75,7 +75,7 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/register" className="flex items-center text-lg hover:text-yellow-400 transition">
+                            <Link to="/signup" className="flex items-center text-lg hover:text-yellow-400 transition">
                                 <FaUserPlus className="mr-2" /> Register
                             </Link>
                         </li>
