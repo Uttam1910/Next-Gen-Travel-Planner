@@ -7,6 +7,6 @@ const router = express.Router();
 router.post('/text', handleTextQuery);
 
 // Route for handling image-based queries
-router.post('/image', handleImageQuery);
+// router.post('/image', handleImageQuery);
 
 module.exports = router;

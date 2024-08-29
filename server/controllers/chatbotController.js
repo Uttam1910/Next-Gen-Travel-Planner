@@ -1,44 +1,30 @@
-const axios = require('axios');
+const { OpenAI } = require('openai'); // Import OpenAI client
+require('dotenv').config(); // Load environment variables
 
-// Handle text-based queries
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY, // Use the API key from your .env file
+});
+
+// Controller function to handle text-based queries
 exports.handleTextQuery = async (req, res) => {
-    const { query } = req.body;
+    const { query } = req.body; // Extract query from the request body
 
     try {
-        // Use a chatbot API or a local NLP model to process the query
-        const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
-            prompt: query,
-            max_tokens: 100,
-        }, {
-            headers: {
-                'Authorization': `Bearer YOUR_OPENAI_API_KEY`,
-            }
+        // Call the OpenAI API to create a chat completion
+        const response = await openai.chat.completions.create({
+            model: "gpt-4", // Use the appropriate model
+            messages: [
+                { role: "system", content: "You are a helpful assistant." },
+                { role: "user", content: query }, // Pass the user's query
+            ],
         });
 
+        // Send the response back to the client
         res.status(200).json({
-            message: response.data.choices[0].text.trim(),
+            message: response.choices[0].message.content.trim(),
         });
     } catch (error) {
-        console.error('Error processing text query:', error);
+        console.error('Error processing text query:', error.response ? error.response.data : error.message);
         res.status(500).json({ message: 'Server error while processing text query' });
-    }
-};
-
-// Handle image-based queries
-exports.handleImageQuery = async (req, res) => {
-    const { image } = req.body;
-
-    try {
-        // Implement image processing logic or call an external image analysis API
-        const response = await axios.post('https://api.imagerecognition.com/analyze', {
-            image,
-        });
-
-        res.status(200).json({
-            message: response.data.description,
-        });
-    } catch (error) {
-        console.error('Error processing image query:', error);
-        res.status(500).json({ message: 'Server error while processing image query' });
     }
 };
