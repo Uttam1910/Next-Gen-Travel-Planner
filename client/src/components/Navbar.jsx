@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaHome, FaUpload, FaQuestionCircle, FaUser, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
+import { FaHome, FaUpload, FaQuestionCircle, FaUser, FaSignInAlt, FaUserPlus, FaInfoCircle, FaEnvelope } from 'react-icons/fa';
 
 const Navbar = () => {
     return (
@@ -8,35 +8,40 @@ const Navbar = () => {
             <div className="container mx-auto px-6 py-4 flex items-center justify-between">
                 {/* Logo */}
                 <div className="flex items-center">
-                    <Link to="/" className="text-3xl font-extrabold flex items-center space-x-2">
-                        <span className="text-indigo-400">Travel</span>
-                        <span className="text-white">Planner</span>
+                    <Link to="/" className="text-3xl font-extrabold flex items-center">
+                        <span className="text-indigo-400">Travel</span> <span className="text-white">Planner</span>
                     </Link>
                 </div>
 
                 {/* Navigation Links */}
-                <nav className="space-x-8 hidden md:flex">
-                    <Link to="/" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                <nav className="space-x-6 hidden md:flex">
+                    <Link to="/" className="flex items-center text-lg hover:text-indigo-400 transition">
                         <FaHome className="mr-2" /> Home
                     </Link>
-                    <Link to="/upload" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                    <Link to="/upload" className="flex items-center text-lg hover:text-indigo-400 transition">
                         <FaUpload className="mr-2" /> Upload
                     </Link>
-                    <Link to="/query" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                    <Link to="/query" className="flex items-center text-lg hover:text-indigo-400 transition">
                         <FaQuestionCircle className="mr-2" /> Query
                     </Link>
-                    <Link to="/profile" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                    <Link to="/profile" className="flex items-center text-lg hover:text-indigo-400 transition">
                         <FaUser className="mr-2" /> Profile
                     </Link>
-                    <Link to="/login" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                    <Link to="/about" className="flex items-center text-lg hover:text-indigo-400 transition">
+                        <FaInfoCircle className="mr-2" /> About Us
+                    </Link>
+                    <Link to="/contact" className="flex items-center text-lg hover:text-indigo-400 transition">
+                        <FaEnvelope className="mr-2" /> Contact Us
+                    </Link>
+                    <Link to="/login" className="flex items-center text-lg hover:text-indigo-400 transition">
                         <FaSignInAlt className="mr-2" /> Login
                     </Link>
-                    <Link to="/signup" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                    <Link to="/signup" className="flex items-center text-lg hover:text-indigo-400 transition">
                         <FaUserPlus className="mr-2" /> Register
                     </Link>
                 </nav>
 
-                {/* Mobile Menu Toggle */}
+                {/* Mobile Menu Toggle (Optional) */}
                 <div className="md:hidden flex items-center">
                     <button className="text-white focus:outline-none">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -46,37 +51,47 @@ const Navbar = () => {
                 </div>
             </div>
 
-            {/* Mobile Navigation Menu */}
-            <nav className="md:hidden bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-lg">
+            {/* Mobile Navigation Menu (Optional) */}
+            <nav className="md:hidden bg-gradient-to-r from-gray-900 to-gray-800 text-white">
                 <div className="container mx-auto px-6 py-4">
-                    <ul className="space-y-6">
+                    <ul className="space-y-4">
                         <li>
-                            <Link to="/" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                            <Link to="/" className="flex items-center text-lg hover:text-indigo-400 transition">
                                 <FaHome className="mr-2" /> Home
                             </Link>
                         </li>
                         <li>
-                            <Link to="/upload" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                            <Link to="/upload" className="flex items-center text-lg hover:text-indigo-400 transition">
                                 <FaUpload className="mr-2" /> Upload
                             </Link>
                         </li>
                         <li>
-                            <Link to="/query" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                            <Link to="/query" className="flex items-center text-lg hover:text-indigo-400 transition">
                                 <FaQuestionCircle className="mr-2" /> Query
                             </Link>
                         </li>
                         <li>
-                            <Link to="/profile" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                            <Link to="/profile" className="flex items-center text-lg hover:text-indigo-400 transition">
                                 <FaUser className="mr-2" /> Profile
                             </Link>
                         </li>
                         <li>
-                            <Link to="/login" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                            <Link to="/about" className="flex items-center text-lg hover:text-indigo-400 transition">
+                                <FaInfoCircle className="mr-2" /> About Us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/contact" className="flex items-center text-lg hover:text-indigo-400 transition">
+                                <FaEnvelope className="mr-2" /> Contact Us
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/login" className="flex items-center text-lg hover:text-indigo-400 transition">
                                 <FaSignInAlt className="mr-2" /> Login
                             </Link>
                         </li>
                         <li>
-                            <Link to="/signup" className="flex items-center text-lg font-semibold hover:text-indigo-400 transition-transform transform hover:scale-105">
+                            <Link to="/signup" className="flex items-center text-lg hover:text-indigo-400 transition">
                                 <FaUserPlus className="mr-2" /> Register
                             </Link>
                         </li>
