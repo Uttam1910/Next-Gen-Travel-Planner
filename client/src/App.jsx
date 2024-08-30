@@ -8,6 +8,8 @@ import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import UploadImage from './pages/UploadImage';
 import Query from './pages/Query';
+import AboutUs from './pages/AboutUs'; // Import About Us page
+import Contact from './pages/Contact'; // Import Contact page
 import './styles/global.css'; // Ensure Tailwind styles are included
 
 const App = () => {
@@ -22,6 +24,8 @@ const App = () => {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/upload" element={<UploadImage />} />
                     <Route path="/query" element={<Query />} />
+                    <Route path="/about-us" element={<AboutUs />} /> {/* Add About Us route */}
+                    <Route path="/contact" element={<Contact />} /> {/* Add Contact route */}
                 </Routes>
             </main>
             <Footer />

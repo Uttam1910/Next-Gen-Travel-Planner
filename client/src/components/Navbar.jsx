@@ -27,7 +27,7 @@ const Navbar = () => {
                     <Link to="/profile" className="flex items-center text-lg hover:text-indigo-400 transition">
                         <FaUser className="mr-2" /> Profile
                     </Link>
-                    <Link to="/about" className="flex items-center text-lg hover:text-indigo-400 transition">
+                    <Link to="/aboutUs" className="flex items-center text-lg hover:text-indigo-400 transition">
                         <FaInfoCircle className="mr-2" /> About Us
                     </Link>
                     <Link to="/contact" className="flex items-center text-lg hover:text-indigo-400 transition">
@@ -76,7 +76,7 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li>
-                            <Link to="/about" className="flex items-center text-lg hover:text-indigo-400 transition">
+                            <Link to="/aboutUs" className="flex items-center text-lg hover:text-indigo-400 transition">
                                 <FaInfoCircle className="mr-2" /> About Us
                             </Link>
                         </li>
