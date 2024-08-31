@@ -24,7 +24,7 @@ const App = () => {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/upload" element={<UploadImage />} />
                     <Route path="/query" element={<Query />} />
-                    <Route path="/about-us" element={<AboutUs />} /> {/* Add About Us route */}
+                    <Route path="/aboutus" element={<AboutUs />} /> {/* Add About Us route */}
                     <Route path="/contact" element={<Contact />} /> {/* Add Contact route */}
                 </Routes>
             </main>

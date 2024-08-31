@@ -48,20 +48,22 @@ const Contact = () => {
                 {/* Contact Form */}
                 <div className="bg-gray-50 p-6 rounded-lg shadow-lg">
                     <h2 className="text-2xl font-semibold mb-4 text-gray-800">Send Us a Message</h2>
-                    <form className="space-y-4">
+                    <form className="space-y-6">
                         <div>
-                            <label htmlFor="name" className="block text-gray-700 font-semibold mb-1">Name</label>
-                            <input type="text" id="name" name="name" className="w-full border border-gray-300 rounded px-3 py-2" required />
+                            <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Name</label>
+                            <input type="text" id="name" name="name" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Name" required />
                         </div>
                         <div>
-                            <label htmlFor="email" className="block text-gray-700 font-semibold mb-1">Email</label>
-                            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded px-3 py-2" required />
+                            <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
+                            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Email" required />
                         </div>
                         <div>
-                            <label htmlFor="message" className="block text-gray-700 font-semibold mb-1">Message</label>
-                            <textarea id="message" name="message" rows="5" className="w-full border border-gray-300 rounded px-3 py-2" required></textarea>
+                            <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
+                            <textarea id="message" name="message" rows="6" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Message" required></textarea>
                         </div>
-                        <button type="submit" className="bg-blue-600 text-white rounded px-6 py-3 hover:bg-blue-700 transition">Submit</button>
+                        <button type="submit" className="bg-blue-600 text-white rounded px-6 py-3 hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-600">
+                            Submit
+                        </button>
                     </form>
                 </div>
             </div>
