@@ -3,41 +3,84 @@ import React from 'react';
 const Contact = () => {
     return (
         <div className="contact px-6 py-10 max-w-7xl mx-auto">
-            <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
-            <p className="mb-4">
-                We'd love to hear from you. Here's how you can reach us...
-            </p>
-            <ul className="mb-6">
-                <li><strong>Email:</strong> contact@yourcompany.com</li>
-                <li><strong>Phone:</strong> +123-456-7890</li>
-                <li><strong>Address:</strong> 123 Your Street, Your City, Your Country</li>
-            </ul>
-            <h2 className="text-2xl font-semibold mb-4">Send Us a Message</h2>
-            <form className="contact-form space-y-4">
-                <div>
-                    <label htmlFor="name" className="block font-semibold">Name</label>
-                    <input type="text" id="name" name="name" className="w-full border border-gray-300 rounded px-3 py-2" required />
+            {/* Header */}
+            <div className="text-center mb-12">
+                <h1 className="text-4xl font-bold mb-4 text-gray-900">Contact Us</h1>
+                <p className="text-lg text-gray-700">
+                    We value your feedback and inquiries. Reach out to us through any of the following methods, and we'll get back to you as soon as possible.
+                </p>
+            </div>
+
+            {/* Contact Information & Form */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                {/* Contact Information */}
+                <div className="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <h2 className="text-2xl font-semibold mb-4 text-gray-800">Contact Information</h2>
+                    <ul className="space-y-4 text-gray-600">
+                        <li>
+                            <strong>Email:</strong>
+                            <a href="mailto:contact@yourcompany.com" className="text-blue-600 hover:underline"> contact@yourcompany.com</a>
+                        </li>
+                        <li>
+                            <strong>Phone:</strong>
+                            <a href="tel:+1234567890" className="text-blue-600 hover:underline"> +123-456-7890</a>
+                        </li>
+                        <li>
+                            <strong>Address:</strong> 123 Your Street, Your City, Your Country
+                        </li>
+                        <li>
+                            <strong>Office Hours:</strong> Mon-Fri, 9 AM - 5 PM
+                        </li>
+                        <li>
+                            <strong>Support:</strong> For support, please visit our <a href="/support" className="text-blue-600 hover:underline">Support Center</a>
+                        </li>
+                        <li>
+                            <strong>Follow Us:</strong>
+                            <div className="flex space-x-4 mt-2">
+                                <a href="https://facebook.com/yourcompany" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Facebook</a>
+                                <a href="https://twitter.com/yourcompany" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Twitter</a>
+                                <a href="https://instagram.com/yourcompany" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">Instagram</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div>
-                    <label htmlFor="email" className="block font-semibold">Email</label>
-                    <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded px-3 py-2" required />
+
+                {/* Contact Form */}
+                <div className="bg-gray-50 p-6 rounded-lg shadow-lg">
+                    <h2 className="text-2xl font-semibold mb-4 text-gray-800">Send Us a Message</h2>
+                    <form className="space-y-4">
+                        <div>
+                            <label htmlFor="name" className="block text-gray-700 font-semibold mb-1">Name</label>
+                            <input type="text" id="name" name="name" className="w-full border border-gray-300 rounded px-3 py-2" required />
+                        </div>
+                        <div>
+                            <label htmlFor="email" className="block text-gray-700 font-semibold mb-1">Email</label>
+                            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded px-3 py-2" required />
+                        </div>
+                        <div>
+                            <label htmlFor="message" className="block text-gray-700 font-semibold mb-1">Message</label>
+                            <textarea id="message" name="message" rows="5" className="w-full border border-gray-300 rounded px-3 py-2" required></textarea>
+                        </div>
+                        <button type="submit" className="bg-blue-600 text-white rounded px-6 py-3 hover:bg-blue-700 transition">Submit</button>
+                    </form>
                 </div>
-                <div>
-                    <label htmlFor="message" className="block font-semibold">Message</label>
-                    <textarea id="message" name="message" rows="5" className="w-full border border-gray-300 rounded px-3 py-2" required></textarea>
+            </div>
+
+            {/* Location Map */}
+            <div className="mt-12">
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">Our Location</h2>
+                <div className="relative w-full h-80">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799140087!2d-74.25986786942512!3d40.697149413782245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f1d41453ba03%3A0x6968d7f9ff97f0c5!2sYour%20Company!5e0!3m2!1sen!2sus!4v1591012345678!5m2!1sen!2sus"
+                        width="100%"
+                        height="100%"
+                        style={{ border: 0 }}
+                        allowFullScreen=""
+                        loading="lazy"
+                        title="Google Map Location"
+                    ></iframe>
                 </div>
-                <button type="submit" className="bg-blue-600 text-white rounded px-4 py-2">Submit</button>
-            </form>
-            <h2 className="text-2xl font-semibold mt-8 mb-4">Our Location</h2>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387190.2799140087!2d-74.25986786942512!3d40.697149413782245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2f1d41453ba03%3A0x6968d7f9ff97f0c5!2sYour%20Company!5e0!3m2!1sen!2sus!4v1591012345678!5m2!1sen!2sus"
-                width="600"
-                height="450"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                title="Google Map Location"
-            ></iframe>
+            </div>
         </div>
     );
 };
