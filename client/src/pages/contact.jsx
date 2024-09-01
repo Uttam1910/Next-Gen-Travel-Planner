@@ -1,6 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axiosInstance from '../helper/axiosInstance'; // Adjust the import path as needed
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
+    const [status, setStatus] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axiosInstance.post('/contact', formData);
+            if (response.status === 200) {
+                setStatus('Message sent successfully!');
+                setFormData({ name: '', email: '', message: '' }); // Clear the form
+            } else {
+                setStatus('Failed to send message.');
+            }
+        } catch (error) {
+            setStatus('Failed to send message.');
+            console.error('Error sending message:', error);
+        }
+    };
+
     return (
         <div className="contact px-6 py-10 max-w-7xl mx-auto">
             {/* Header */}
@@ -48,23 +80,51 @@ const Contact = () => {
                 {/* Contact Form */}
                 <div className="bg-gray-50 p-6 rounded-lg shadow-lg">
                     <h2 className="text-2xl font-semibold mb-4 text-gray-800">Send Us a Message</h2>
-                    <form className="space-y-6">
+                    <form className="space-y-6" onSubmit={handleSubmit}>
                         <div>
                             <label htmlFor="name" className="block text-gray-700 font-semibold mb-2">Name</label>
-                            <input type="text" id="name" name="name" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Name" required />
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                value={formData.name} 
+                                onChange={handleChange} 
+                                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" 
+                                placeholder="Your Name" 
+                                required 
+                            />
                         </div>
                         <div>
                             <label htmlFor="email" className="block text-gray-700 font-semibold mb-2">Email</label>
-                            <input type="email" id="email" name="email" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Email" required />
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                value={formData.email} 
+                                onChange={handleChange} 
+                                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" 
+                                placeholder="Your Email" 
+                                required 
+                            />
                         </div>
                         <div>
                             <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">Message</label>
-                            <textarea id="message" name="message" rows="6" className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Your Message" required></textarea>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="6" 
+                                value={formData.message} 
+                                onChange={handleChange} 
+                                className="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-600" 
+                                placeholder="Your Message" 
+                                required
+                            ></textarea>
                         </div>
                         <button type="submit" className="bg-blue-600 text-white rounded px-6 py-3 hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-600">
                             Submit
                         </button>
                     </form>
+                    {status && <p className="mt-4 text-gray-700">{status}</p>}
                 </div>
             </div>
 

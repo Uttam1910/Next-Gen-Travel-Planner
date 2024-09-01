@@ -29,11 +29,21 @@ axiosInstance.interceptors.response.use(
         return response;
     },
     error => {
-        // Handle errors, like redirecting to login if unauthorized
-        if (error.response.status === 401) {
-            // Redirect to login or perform some action
+        if (error.response) {
+            // Handle HTTP errors
+            if (error.response.status === 401) {
+                // Redirect to login or perform some action
+                window.location.href = '/login'; // Example redirection
+            } else if (error.response.status === 500) {
+                // Handle server errors
+                console.error('Server error:', error.response.data.message);
+            }
+            return Promise.reject(error.response.data.message || 'Something went wrong');
+        } else {
+            // Handle network errors
+            console.error('Network error:', error.message);
+            return Promise.reject('Network error: Please check your internet connection.');
         }
-        return Promise.reject(error);
     }
 );
 
