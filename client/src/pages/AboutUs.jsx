@@ -52,22 +52,22 @@ const AboutUs = () => {
             <h2 className="text-2xl font-semibold text-center mb-6 text-gray-900">Meet Our Team</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
                 <div className="team-member text-center">
-                    <img src="uttam.jpg" alt="Uttam" className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
+                    <img src="/images/uttam.JPG" alt="Uttam" className="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
                     <h3 className="font-bold text-xl text-gray-900">Uttam</h3>
                     <p className="text-lg text-gray-600">CEO & Founder</p>
                 </div>
                 <div className="team-member text-center">
-                    <img src="anurag.jpg" alt="Anurag" className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
+                    <img src="/images/anurag.jpg" alt="Anurag" className="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
                     <h3 className="font-bold text-xl text-gray-900">Anurag</h3>
                     <p className="text-lg text-gray-600">Lead Developer</p>
                 </div>
                 <div className="team-member text-center">
-                    <img src="shubham.jpg" alt="Shubham" className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
+                    <img src="/images/shubham.jpg" alt="Shubham" className="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
                     <h3 className="font-bold text-xl text-gray-900">Shubham</h3>
                     <p className="text-lg text-gray-600">Product Manager</p>
                 </div>
                 <div className="team-member text-center">
-                    <img src="shruti.jpg" alt="Shruti" className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
+                    <img src="/images/shruti.png" alt="Shruti" className="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
                     <h3 className="font-bold text-xl text-gray-900">Shruti</h3>
                     <p className="text-lg text-gray-600">Marketing Specialist</p>
                 </div>
