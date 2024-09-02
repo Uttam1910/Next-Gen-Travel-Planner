@@ -21,7 +21,7 @@ const Login = () => {
             const res = await axios.post('/auth/login', formData);
             localStorage.setItem('token', res.data.token);
             setSuccess('Login successful!');
-            setTimeout(() => navigate('/profile'), 2000);
+            setTimeout(() => navigate('/'), 2000);
         } catch (err) {
             setError(err.response?.data?.message || 'Something went wrong');
         }
