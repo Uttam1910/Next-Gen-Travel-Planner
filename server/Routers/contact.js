@@ -1,4 +1,4 @@
-// routers/contactRoutes.js
+// routers/contact.js
 
 const express = require('express');
 const router = express.Router();

@@ -36,9 +36,9 @@ axiosInstance.interceptors.response.use(
                 window.location.href = '/login'; // Example redirection
             } else if (error.response.status === 500) {
                 // Handle server errors
-                console.error('Server error:', error.response.data.message);
+                console.error('Server error:', error.response.data.error || 'Something went wrong');
             }
-            return Promise.reject(error.response.data.message || 'Something went wrong');
+            return Promise.reject(error.response.data.error || 'Something went wrong');
         } else {
             // Handle network errors
             console.error('Network error:', error.message);

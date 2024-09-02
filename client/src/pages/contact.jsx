@@ -20,13 +20,9 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axiosInstance.post('/contact', formData);
-            if (response.status === 200) {
-                setStatus('Message sent successfully!');
-                setFormData({ name: '', email: '', message: '' }); // Clear the form
-            } else {
-                setStatus('Failed to send message.');
-            }
+            const response = await axiosInstance.post('/contact/submit', formData);
+            setStatus(response.data.message); // Use the message from the server response
+            setFormData({ name: '', email: '', message: '' }); // Clear the form
         } catch (error) {
             setStatus('Failed to send message.');
             console.error('Error sending message:', error);
