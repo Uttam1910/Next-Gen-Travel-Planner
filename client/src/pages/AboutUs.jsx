@@ -67,7 +67,7 @@ const AboutUs = () => {
                     <p className="text-lg text-gray-600">Product Manager</p>
                 </div>
                 <div className="team-member text-center">
-                    <img src="/images/shruti.png" alt="Shruti" className="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
+                    <img src="/images/shruti.jpg" alt="Shruti" className="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-300 shadow-lg" />
                     <h3 className="font-bold text-xl text-gray-900">Shruti</h3>
                     <p className="text-lg text-gray-600">Marketing Specialist</p>
                 </div>
