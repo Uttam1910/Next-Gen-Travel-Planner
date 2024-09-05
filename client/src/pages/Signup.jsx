@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axiosInstance from '../helper/axiosInstance'; // Import the custom Axios instance
 import { useNavigate, Link } from 'react-router-dom';
+import { FaUser, FaEnvelope, FaLock } from 'react-icons/fa'; // Icons for better UI
 
 const Signup = () => {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' });
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -16,6 +18,19 @@ const Signup = () => {
         e.preventDefault();
         setError('');
         setSuccess('');
+        setLoading(true);
+
+        if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+            setError('Invalid email format.');
+            setLoading(false);
+            return;
+        }
+
+        if (formData.password.length < 6) {
+            setError('Password must be at least 6 characters long.');
+            setLoading(false);
+            return;
+        }
 
         try {
             const res = await axiosInstance.post('/auth/register', formData); // Use axiosInstance
@@ -23,68 +38,67 @@ const Signup = () => {
             setTimeout(() => navigate('/login'), 2000); // Redirect to login after 2 seconds
         } catch (err) {
             setError(err.response?.data?.message || 'Something went wrong');
+        } finally {
+            setLoading(false);
         }
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
-            <div className="bg-white p-10 rounded-lg shadow-2xl w-full max-w-md">
-                <h2 className="text-4xl font-extrabold mb-6 text-center text-gray-900">Sign Up</h2>
+        <div className="flex items-center justify-center min-h-screen bg-gray-50">
+            <div className="bg-white p-8 rounded-lg shadow-xl w-full max-w-lg">
+                <h2 className="text-4xl font-bold mb-6 text-center text-gray-900">Sign Up</h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
-                        <label htmlFor="name" className="block text-gray-700 font-semibold">
-                            Name
-                        </label>
+                    <div className="flex items-center border-b-2 border-gray-300 py-2">
+                        <FaUser className="text-gray-500 mr-3" />
                         <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            placeholder="Enter your name"
+                            className="w-full px-4 py-2 text-gray-900 bg-transparent focus:outline-none"
                         />
                     </div>
-                    <div>
-                        <label htmlFor="email" className="block text-gray-700 font-semibold">
-                            Email
-                        </label>
+                    <div className="flex items-center border-b-2 border-gray-300 py-2">
+                        <FaEnvelope className="text-gray-500 mr-3" />
                         <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            placeholder="Enter your email"
+                            className="w-full px-4 py-2 text-gray-900 bg-transparent focus:outline-none"
                         />
                     </div>
-                    <div>
-                        <label htmlFor="password" className="block text-gray-700 font-semibold">
-                            Password
-                        </label>
+                    <div className="flex items-center border-b-2 border-gray-300 py-2">
+                        <FaLock className="text-gray-500 mr-3" />
                         <input
                             type="password"
                             name="password"
                             value={formData.password}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                            placeholder="Enter your password"
+                            className="w-full px-4 py-2 text-gray-900 bg-transparent focus:outline-none"
                         />
                     </div>
-                    {error && <p className="text-red-500 text-sm">{error}</p>}
-                    {success && <p className="text-green-500 text-sm">{success}</p>}
+                    {error && <p className="text-red-500 text-center text-sm">{error}</p>}
+                    {success && <p className="text-green-500 text-center text-sm">{success}</p>}
+                    {loading && <div className="text-center"><span className="loader"></span></div>}
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 text-white py-3 rounded-lg font-bold hover:bg-blue-700 transition duration-300"
+                        disabled={loading}
+                        className="w-full bg-blue-600 text-white py-3 rounded-full font-bold hover:opacity-90 transition duration-300"
                     >
-                        Sign Up
+                        {loading ? 'Signing up...' : 'Sign Up'}
                     </button>
-                    <div className="text-center mt-6">
-                        <p className="text-gray-600">
-                            Already have an account?{' '}
-                            <Link to="/login" className="text-blue-600 font-semibold hover:underline">
-                                Login here
-                            </Link>
-                        </p>
+
+                    <div className="flex justify-between items-center mt-4 text-sm">
+                        <Link to="/login" className="text-blue-600 hover:underline">
+                            Already have an account? Login here
+                        </Link>
                     </div>
                 </form>
             </div>
