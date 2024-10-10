@@ -14,26 +14,31 @@ import PrivacyPolicy from './pages/PrivacyPolicy'; // Import Privacy Policy page
 import TermsOfService from './pages/TermsOfService'; // Import Terms of Service page
 import './styles/global.css'; // Ensure Tailwind styles are included
 
+// Import AuthContext
+import { AuthProvider } from './components/AuthContext';
+
 const App = () => {
     return (
-        <Router>
-            <Navbar />
-            <main className="flex-grow">
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/profile" element={<Profile />} />
-                    <Route path="/upload" element={<UploadImage />} />
-                    <Route path="/query" element={<Query />} />
-                    <Route path="/aboutus" element={<AboutUs />} /> {/* Add About Us route */}
-                    <Route path="/contact" element={<Contact />} /> {/* Add Contact route */}
-                    <Route path="/privacy" element={<PrivacyPolicy />} /> {/* Add Privacy Policy route */}
-                    <Route path="/terms" element={<TermsOfService />} /> {/* Add Terms of Service route */}
-                </Routes>
-            </main>
-            <Footer />
-        </Router>
+        <AuthProvider> {/* Wrap the entire app with AuthProvider */}
+            <Router>
+                <Navbar />
+                <main className="flex-grow">
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/signup" element={<Signup />} />
+                        <Route path="/profile" element={<Profile />} />
+                        <Route path="/upload" element={<UploadImage />} />
+                        <Route path="/query" element={<Query />} />
+                        <Route path="/aboutus" element={<AboutUs />} /> {/* Add About Us route */}
+                        <Route path="/contact" element={<Contact />} /> {/* Add Contact route */}
+                        <Route path="/privacy" element={<PrivacyPolicy />} /> {/* Add Privacy Policy route */}
+                        <Route path="/terms" element={<TermsOfService />} /> {/* Add Terms of Service route */}
+                    </Routes>
+                </main>
+                <Footer />
+            </Router>
+        </AuthProvider>
     );
 };
 
